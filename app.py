@@ -23,7 +23,6 @@ def uploadFile():
     file_base64 = request.json.get("file")
     filename = request.json.get("filename")
     type_file = request.json.get("type")
-
     database = mysql.connection.cursor(MySQLdb.cursors.DictCursor)
     saved = ProcessFiles.saveFile(database, file_base64, filename, type_file)
     database.close()
@@ -39,9 +38,9 @@ def home():
     file = request.json.get("file")
     action = request.json.get("action")
     database = mysql.connection.cursor(MySQLdb.cursors.DictCursor)
-    process = { "request_query": request_query, "file": file, "action": action }   
+    process = { "request_query": request_query, "file": file, "action": action}   
     result = Process.initProcess(database, process)
-    database.close()
+
     return result
 
 # Executa a aplição na porta 3000 (localhost)
