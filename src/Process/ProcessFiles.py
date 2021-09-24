@@ -35,6 +35,7 @@ class ProcessFiles:
         # print("Após eliminar as quebras")
         # print(parsed)
         return parsed
+        
     def getNumberOfPdfPages(file):
         try:
             # file_exists = os.path.exists(f'storage/{file}.pdf')

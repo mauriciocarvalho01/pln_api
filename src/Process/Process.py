@@ -34,16 +34,20 @@ class Process:
         process['type'] = file[0]['type']
 
         process['hash'] = hash
-        
-        chat_response = ChatResponse.getChatResponse(database, hash)
+
+        chat_response = ChatResponse.updateChatResponse(database, process)
+
 
         if len(chat_response) > 0:
-            return chat_response[0]['response']
+            # print("chat_response")
+            # print(chat_response)
+            response = chat_response[0]
+            return response
         else:
             if action == "query":
                 db = database
                 Thread(db, process).start()
-                response = {"status": "process", "message": "Ainda não sei a resposta, estou aprendendo..."}
+                response = {"status": "learning", "message": "Ainda não sei a resposta, estou aprendendo..."}
                 return response
             elif action == "resume":
                 resume = Resume.resumeFile(process)
