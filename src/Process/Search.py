@@ -17,7 +17,6 @@ from .ProcessFiles import ProcessFiles
 
 class Search:
     def querySentence(process):
-
         request_query = process['request_query']
         file = process['file']
         type_file = process['type']
@@ -83,6 +82,8 @@ class Search:
         res =  sorted(res,key=itemgetter(0), reverse=True)
         response = {
             "time": str(t1-t0) + " segundos",
+            "type": process['action'],
+            "status": "learn",
             "response": res[0:4]
         }
 

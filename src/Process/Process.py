@@ -21,21 +21,27 @@ from .Resume import Resume
 from .Tools import Tools
 
 class Process:
-  
     def initProcess(database, process):
         action = process['action']
         print(action)
         text = process['request_query']
         file = process['file']
+        user_id = process['user_id']
+        print(user_id)
         hash = Tools.encodeBase64(text)
 
-        file = Files.getFiles(database, file)
+        file = Files.getFiles(database, file, user_id)
+        print(file)
 
+        if len(file) == 0:
+            return {"status": "erro", "message": "Não achei nenhum arquivo cadastrado"}
         process['type'] = file[0]['type']
 
         process['hash'] = hash
 
-        chat_response = ChatResponse.updateChatResponse(database, process)
+        chat_response = []
+        if action == 'query':
+            chat_response = ChatResponse.updateChatResponse(database, process)
 
 
         if len(chat_response) > 0:
@@ -47,7 +53,7 @@ class Process:
             if action == "query":
                 db = database
                 Thread(db, process).start()
-                response = {"status": "learning", "message": "Ainda não sei a resposta, estou aprendendo..."}
+                response = {"status": "learning", "message": "Ainda não sei a resposta, estou aprendendo...Pergunte - me novamente em instantes"}
                 return response
             elif action == "resume":
                 resume = Resume.resumeFile(process)

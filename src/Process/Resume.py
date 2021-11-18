@@ -68,6 +68,8 @@ class Resume:
 
         response = {
             "time": str(t1-t0) + " segundos",
+            "type": process["action"],
+            "status": "success",
             "response": res
         }
 

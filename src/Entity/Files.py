@@ -3,8 +3,8 @@ import MySQLdb.cursors
 import json
 
 class Files:
-    def getFiles(database, name_file):
-        database.execute("SELECT * FROM explain.files_jarvis WHERE name=%s", (name_file,))
+    def getFiles(database, id_file, user_id):
+        database.execute("SELECT * FROM `explain`.`files_jarvis` AS files INNER JOIN `explain`.`users` AS user USING(user_id) WHERE files.id = %s AND user.user_id = %s", (id_file,user_id))
         data = database.fetchall()
         return data
 
@@ -15,4 +15,7 @@ class Files:
         print("New json file is created from"  + process['hash'] + ".json file")
         return True
         
-    
+    def allFiles(database, user_id):
+        database.execute("SELECT * FROM `explain`.`files_jarvis` AS files INNER JOIN `explain`.`users` AS user USING(user_id) WHERE user.user_id = %s", (user_id,))
+        data = database.fetchall()
+        return data
