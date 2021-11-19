@@ -18,7 +18,7 @@ app.config['MYSQL_PASSWORD'] = 'e6ebbdb9'
 app.config['MYSQL_DB'] = 'heroku_54c63117db00862'
 mysql = MySQL(app)
 
-@app.route('/home', methods=['GET'])
+@app.route('/', methods=['GET'])
 def teste():
     return {"teste": "Opa"}
 
