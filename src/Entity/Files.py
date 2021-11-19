@@ -4,7 +4,7 @@ import json
 
 class Files:
     def getFiles(database, id_file, user_id):
-        database.execute("SELECT * FROM `explain`.`files_jarvis` AS files INNER JOIN `explain`.`users` AS user USING(user_id) WHERE files.id = %s AND user.user_id = %s", (id_file,user_id))
+        database.execute("SELECT * FROM `heroku_54c63117db00862`.`files_jarvis` AS files INNER JOIN `heroku_54c63117db00862`.`users` AS user USING(user_id) WHERE files.id = %s AND user.user_id = %s", (id_file,user_id))
         data = database.fetchall()
         return data
 
@@ -16,6 +16,6 @@ class Files:
         return True
         
     def allFiles(database, user_id):
-        database.execute("SELECT * FROM `explain`.`files_jarvis` AS files INNER JOIN `explain`.`users` AS user USING(user_id) WHERE user.user_id = %s", (user_id,))
+        database.execute("SELECT * FROM `heroku_54c63117db00862`.`files_jarvis` AS files INNER JOIN `heroku_54c63117db00862`.`users` AS user USING(user_id) WHERE user.user_id = %s", (user_id,))
         data = database.fetchall()
         return data

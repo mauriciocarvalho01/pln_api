@@ -6,7 +6,7 @@ import os
 
 class ChatResponse:
     def getChatResponse(database, hash):
-        database.execute("SELECT response FROM explain.chat_response WHERE hash=%s", (hash,))
+        database.execute("SELECT response FROM heroku_54c63117db00862.chat_response WHERE hash=%s", (hash,))
         data = database.fetchall()
         return data
 
@@ -17,7 +17,7 @@ class ChatResponse:
         check_exists = ChatResponse.getChatResponse(database, hash)
         inserted = []
         if len(check_exists) == 0: 
-            insert = database.execute('INSERT INTO explain.chat_response (hash, text, response) VALUES (%s,%s, %s)', (hash, text, response))
+            insert = database.execute('INSERT INTO heroku_54c63117db00862.chat_response (hash, text, response) VALUES (%s,%s, %s)', (hash, text, response))
             print("Insert")
             print(insert)
             if(insert):
