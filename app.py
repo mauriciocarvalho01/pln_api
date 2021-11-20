@@ -12,10 +12,10 @@ import MySQLdb.cursors
 app = Flask(__name__)     # Iniciando a aplicação.
 app.config["DEBUG"] = True
 app.config['MYSQL_HOST'] = 'us-cdbr-east-04.cleardb.com'
-app.config['MYSQL_USER'] = 'bff573ab22d3d2'
+app.config['MYSQL_USER'] = 'b1a2a60a5c5674'
 app.config['MYSQL_PORT'] = 3306
-app.config['MYSQL_PASSWORD'] = 'e6ebbdb9'
-app.config['MYSQL_DB'] = 'heroku_54c63117db00862'
+app.config['MYSQL_PASSWORD'] = 'b2e2c06a'
+app.config['MYSQL_DB'] = 'heroku_8a1f058f1608fe5'
 mysql = MySQL(app)
 
 @app.route('/', methods=['GET'])

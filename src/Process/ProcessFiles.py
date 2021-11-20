@@ -61,7 +61,7 @@ class ProcessFiles:
     def saveFile(database, file, filename, type_file):
         pdf_file = 'storage/'+filename+'.'+type_file
 
-        insert = database.execute('INSERT INTO heroku_54c63117db00862.files_jarvis (name, type) VALUES (%s,%s)', (filename, type_file))
+        insert = database.execute('INSERT INTO heroku_8a1f058f1608fe5.files_jarvis (name, type) VALUES (%s,%s)', (filename, type_file))
         print("Insert")
         print(insert)
         if(insert):
