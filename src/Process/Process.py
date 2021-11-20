@@ -66,6 +66,6 @@ class Process:
                 #         return "Erro ao inserir texto"
                 return resume
             else:
-                return "Erro ao resumir texto"
+                return "Não reconheço essa ação"
         
 

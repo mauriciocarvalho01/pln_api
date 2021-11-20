@@ -36,7 +36,7 @@ def uploadFile():
     else:
         return {"save": False,"message": "Erro ao salvar arquivo"}
 
-@app.route('/files/<user_id>', methods=['POST'])
+@app.route('/files/<user_id>', methods=['GET'])
 def getAllFiles(user_id):
     # user_id = request.args.get('user_id')
     print(user_id)
@@ -49,7 +49,7 @@ def getAllFiles(user_id):
     else:
         return {"files": files}
 
-@app.route('/files/<user_id>/<file_id>', methods=['POST'])
+@app.route('/files/<user_id>/<file_id>', methods=['GET']) 
 def getFiles(user_id, file_id):
     # user_id = request.args.get('user_id')
     database = mysql.connection.cursor(MySQLdb.cursors.DictCursor)
