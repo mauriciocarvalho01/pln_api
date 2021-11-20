@@ -39,6 +39,7 @@ class ProcessFiles:
     def getNumberOfPdfPages(file):
         try:
             # file_exists = os.path.exists(f'storage/{file}.pdf')
+            print('storage/' + file + '.pdf')
             pdf_file = open(f'storage/{file}.pdf', 'rb')
             read_pdf = PyPDF2.PdfFileReader(pdf_file)
             #pega o numero de páginas
