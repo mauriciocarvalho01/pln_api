@@ -31,18 +31,14 @@ class Process:
         hash = Tools.encodeBase64(text)
 
         file = Files.getFiles(database, file, user_id)
-        print(file)
-
         if len(file) == 0:
             return {"status": "erro", "message": "Não achei nenhum arquivo cadastrado"}
         process['type'] = file[0]['type']
-
         process['hash'] = hash
 
         chat_response = []
         if action == 'query':
             chat_response = ChatResponse.updateChatResponse(database, process)
-
 
         if len(chat_response) > 0:
             # print("chat_response")

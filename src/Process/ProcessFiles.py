@@ -22,6 +22,7 @@ class ProcessFiles:
 
         #extrai apenas o texto
         page_content = page.extractText()
+        # page_content = page_content.encode('utf-8')
         parsed = page_content.replace("\n", " ")
         
         # faz a junção das linhas
@@ -33,7 +34,8 @@ class ProcessFiles:
         # remove as quebras de linha
         # parsed = re.sub('\n', '', parsed)
         # print("Após eliminar as quebras")
-        # print(parsed)
+        print(parsed)
+     
         return parsed
         
     def getNumberOfPdfPages(file):
