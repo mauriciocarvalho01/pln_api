@@ -34,7 +34,6 @@ class ProcessFiles:
         # remove as quebras de linha
         # parsed = re.sub('\n', '', parsed)
         # print("Após eliminar as quebras")
-        print(parsed)
      
         return parsed
         
