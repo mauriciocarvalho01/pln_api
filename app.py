@@ -74,8 +74,6 @@ def createUsers():
         return Response({"user_register": str(user_register)}, status=201, mimetype='application/json')
     else:
         return Response({"user_exists": str(1)}, status=400, mimetype='application/json')
-    
-
 
 @app.route('/files/<user_id>', methods=['GET'])
 def getAllFiles(user_id):
