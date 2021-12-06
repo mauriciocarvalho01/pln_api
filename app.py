@@ -9,11 +9,15 @@ from src.Entity.Users import Users
 from flask_mysqldb import MySQL
 import MySQLdb.cursors
 from werkzeug.utils import secure_filename
+from flask_cors import CORS
+
 
 UPLOAD_FOLDER = 'storage/'
 ALLOWED_EXTENSIONS = {'pdf','docx'}
 
-app = Flask(__name__)     # Iniciando a aplicação.
+app = Flask(__name__) 
+CORS(app)   
+ # Iniciando a aplicação.
 app.config["DEBUG"] = True
 app.config['MYSQL_HOST'] = 'us-cdbr-east-04.cleardb.com'
 app.config['MYSQL_USER'] = 'b1a2a60a5c5674'
