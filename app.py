@@ -1,10 +1,11 @@
 # Faz os imports utilizados
 
-from flask import Flask, request, jsonify, render_template
+from flask import Flask, request, Response, jsonify, render_template
 import os
 from src.Process.Process import Process
 from src.Process.ProcessFiles import ProcessFiles
 from src.Entity.Files import Files
+from src.Entity.Users import Users
 from flask_mysqldb import MySQL
 import MySQLdb.cursors
 from werkzeug.utils import secure_filename
@@ -53,6 +54,23 @@ def uploadFile():
         else:
             return {"erro": "arquivo não suportado"}
     return {"message": "salvo"}
+
+@app.route('/create/users', methods=['POST'])
+def createUsers():
+    user_id = request.json.get("user_id")
+    first_name = request.json.get("first_name")
+    database = mysql.connection.cursor(MySQLdb.cursors.DictCursor)
+    user = Users.getUser(database, user_id)
+    print(user)
+    database.close()
+    if len(user) == 0:
+        database = mysql.connection.cursor(MySQLdb.cursors.DictCursor)
+        user_register = Users.insertUser(database, user_id, first_name)
+        database.close() 
+        return Response({"user_register": str(user_register)}, status=201, mimetype='application/json')
+    else:
+        return Response({"user_exists": str(1)}, status=400, mimetype='application/json')
+    
 
 
 @app.route('/files/<user_id>', methods=['GET'])

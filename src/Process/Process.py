@@ -28,9 +28,9 @@ class Process:
         file = process['file']
         user_id = process['user_id']
         print(user_id)
-        hash = Tools.encodeBase64(text)
+        hash = Tools.encodeBase64(text) 
 
-        file = Files.getFiles(database, file, user_id)
+        file = Files.getFiles(database, file, user_id)     
         if len(file) == 0:
             return {"status": "erro", "message": "Não achei nenhum arquivo cadastrado"}
         process['type'] = file[0]['type']
